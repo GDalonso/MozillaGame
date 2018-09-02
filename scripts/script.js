@@ -1,15 +1,15 @@
 // Set starting life totals here
 var playerLife = 10;
-var hackerLife = 10;
+var teacherLife = 10;
 
 // Message when the game is over
-var hackerWinnerMessage = "Game over: You got it wrong!";
+var teacherWinnerMessage = "Game over: You got it wrong!";
 var playerWinnerMessage = "You've done it!";
 
 
 // Game code starts here
 var playerStartLife = parseInt(playerLife);
-var hackerStartLife = parseInt(hackerLife);
+var teacherStartLife = parseInt(teacherLife);
 
 var roundFinished = false;
 var cardSelected = false;
@@ -41,9 +41,9 @@ function cardClicked(cardEl) {
 
   document.querySelector(".game-board").classList.add("card-selected");
 
-  // Wait 500ms to reveal the hacker power
+  // Wait 500ms to reveal the teacher power
   setTimeout(function(){
-    revealHackerPower();
+    revealteacherPower();
   },500)
 
   // Wait 750ms to reveal the player power
@@ -63,46 +63,46 @@ function revealPlayerPower(){
   playerCard.classList.add("reveal-power");
 }
 
-// Shows the power level on the hacker card
-function revealHackerPower(){
-  var hackerCard = document.querySelector(".hacker-card");
-  hackerCard.classList.add("reveal-power");
+// Shows the power level on the teacher card
+function revealteacherPower(){
+  var teacherCard = document.querySelector(".teacher-card");
+  teacherCard.classList.add("reveal-power");
 }
 
 function compareCards(){
   var playerCard = document.querySelector(".played-card");
   var playerPowerEl = playerCard.querySelector(".power");
 
-  var hackerCard = document.querySelector(".hacker-card");
-  var hackerPowerEl = hackerCard.querySelector(".power");
+  var teacherCard = document.querySelector(".teacher-card");
+  var teacherPowerEl = teacherCard.querySelector(".power");
 
   var playerPower = parseInt(playerPowerEl.innerHTML);
-  var hackerPower = parseInt(hackerPowerEl.innerHTML);
+  var teacherPower = parseInt(teacherPowerEl.innerHTML);
 
-  var powerDifference = playerPower - hackerPower;
+  var powerDifference = playerPower - teacherPower;
 
   if (powerDifference < 0) {
     // Player Loses
     playerLife = playerLife + powerDifference;
-    hackerCard.classList.add("better-card");
+    teacherCard.classList.add("better-card");
     playerCard.classList.add("worse-card");
     document.querySelector(".player-stats .thumbnail").classList.add("ouch");
   } else if (powerDifference > 0) {
     // Player Wins
-    hackerLife = hackerLife - powerDifference;
+    teacherLife = teacherLife - powerDifference;
     playerCard.classList.add("better-card");
-    hackerCard.classList.add("worse-card");
-    document.querySelector(".hacker-stats .thumbnail").classList.add("ouch");
+    teacherCard.classList.add("worse-card");
+    document.querySelector(".teacher-stats .thumbnail").classList.add("ouch");
   } else {
     playerCard.classList.add("tie-card");
-    hackerCard.classList.add("tie-card");
+    teacherCard.classList.add("tie-card");
   }
 
   updateScores();
 
   if(playerLife <= 0) {
-    gameOver("Hacker");
-  } else if (hackerLife <= 0){
+    gameOver("teacher");
+  } else if (teacherLife <= 0){
     gameOver("Player")
   }
 
@@ -116,11 +116,11 @@ function gameOver(winner) {
   document.querySelector(".game-board").classList.add("game-over");
   document.querySelector(".winner-section").style.display = "flex";
   document.querySelector(".winner-section").classList.remove("player-color");
-  document.querySelector(".winner-section").classList.remove("hacker-color");
+  document.querySelector(".winner-section").classList.remove("teacher-color");
 
-  if(winner == "Hacker") {
-    document.querySelector(".winner-message").innerHTML = hackerWinnerMessage;
-    document.querySelector(".winner-section").classList.add("hacker-color");
+  if(winner == "teacher") {
+    document.querySelector(".winner-message").innerHTML = teacherWinnerMessage;
+    document.querySelector(".winner-section").classList.add("teacher-color");
   } else {
     document.querySelector(".winner-message").innerHTML = playerWinnerMessage;
     document.querySelector(".winner-section").classList.add("player-color");
@@ -143,7 +143,7 @@ function restartGame(){
   document.querySelector(".game-board").classList.add("before-game");
 
   document.querySelector(".winner-section").style.display = "none";
-  document.querySelector(".hacker-card").style.display = "none";
+  document.querySelector(".teacher-card").style.display = "none";
 
   var cards = allCardElements;
 
@@ -154,7 +154,7 @@ function restartGame(){
   }
 
   playerLife = playerStartLife;
-  hackerLife = hackerStartLife;
+  teacherLife = teacherStartLife;
 
   roundFinished = true;
   cardSelected = false;
@@ -167,7 +167,7 @@ function updateScores(){
 
   // Update life totals for each player
   document.querySelector(".player-stats .life-total").innerHTML = playerLife;
-  document.querySelector(".hacker-stats .life-total").innerHTML = hackerLife;
+  document.querySelector(".teacher-stats .life-total").innerHTML = teacherLife;
 
   // Update the player lifebar
   var playerPercent = playerLife / playerStartLife * 100;
@@ -176,12 +176,12 @@ function updateScores(){
   }
   document.querySelector(".player-stats .life-left").style.height =  playerPercent + "%";
 
-  // Update the hacker lifebar
-  var hackerPercent = hackerLife / hackerStartLife * 100
-  if (hackerPercent < 0) {
-    hackerPercent = 0;
+  // Update the teacher lifebar
+  var teacherPercent = teacherLife / teacherStartLife * 100
+  if (teacherPercent < 0) {
+    teacherPercent = 0;
   }
-  document.querySelector(".hacker-stats .life-left").style.height =  hackerPercent + "%";
+  document.querySelector(".teacher-stats .life-left").style.height =  teacherPercent + "%";
 }
 
 
@@ -206,8 +206,8 @@ function playTurn() {
 
   document.querySelector(".game-board").classList.remove("card-selected");
 
-  // Remove "ouch" class from player and hacker thumbnails
-  document.querySelector(".hacker-stats .thumbnail").classList.remove("ouch");
+  // Remove "ouch" class from player and teacher thumbnails
+  document.querySelector(".teacher-stats .thumbnail").classList.remove("ouch");
   document.querySelector(".player-stats .thumbnail").classList.remove("ouch");
 
   // Hides the "next turn" button, will show again when turn is over
@@ -232,8 +232,8 @@ function revealCards(){
   var randomScenarioIndex = Math.floor(Math.random() * (scenarios.length));
   var scenario = scenarios[randomScenarioIndex];
 
-  var hackerCard = scenario.hackerCard;
-  var hackerCardEl = document.querySelector(".hacker-area .card");
+  var teacherCard = scenario.teacherCard;
+  var teacherCardEl = document.querySelector(".teacher-area .card");
 
   // Contents of the player cards
   var playerCards = scenario.playerCards;
@@ -265,7 +265,7 @@ function revealCards(){
     }(card,i), parseInt(i+1) * 200);
   }
 
-  // Display the hacker card
-  hackerCardEl.querySelector(".text").innerHTML = hackerCard.description;
-  hackerCardEl.querySelector(".power").innerHTML = hackerCard.power;
+  // Display the teacher card
+  teacherCardEl.querySelector(".text").innerHTML = teacherCard.description;
+  teacherCardEl.querySelector(".power").innerHTML = teacherCard.power;
 }

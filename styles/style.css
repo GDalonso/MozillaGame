@@ -17,7 +17,7 @@ body {
   width: 100%;
 }
 
-.hacker-area h1 {
+.teacher-area h1 {
   padding: 12px 10px 0 10px;
   margin: 0;
   font-size: 16px;
@@ -33,7 +33,7 @@ h1 strong {
   font-style: normal;
 }
 
-.hacker-area,
+.teacher-area,
 .player-area {
   position: relative;
   display: flex;
@@ -46,7 +46,7 @@ h1 strong {
   box-sizing: border-box;
 }
 
-.hacker-area {
+.teacher-area {
   background-position: bottom;
   align-items: flex-end;
 }
@@ -303,12 +303,12 @@ button[disabled=true] {
   opacity: 1;
 }
 
-.hacker-card.showCard {
-  animation: hackerShowCard .5s ease-out;
+.teacher-card.showCard {
+  animation: teacherShowCard .5s ease-out;
 }
 
-/* When the hacker card appears */
-@keyframes hackerShowCard {
+/* When the teacher card appears */
+@keyframes teacherShowCard {
   0%   { transform: translateY(-25px); opacity: .5; }
   60%  { transform: translateY(5px); }
   100% { transform: translateY(0px); }
@@ -333,11 +333,11 @@ button[disabled=true] {
   background: #888;
 }
 
-.hacker-card.better-card {
+.teacher-card.better-card {
   transform: scale(1.03);
 }
 
-.hacker-card.worse-card {
+.teacher-card.worse-card {
   transform: scale(.90) translateY(-25px) rotate(3deg);
 }
 

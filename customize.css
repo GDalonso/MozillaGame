@@ -15,17 +15,17 @@
   background-image: url(images/answer.png);
 }
 
-/* Hacker Styles */
+/* teacher Styles */
 
-.hacker-color {
+.teacher-color {
   background-color: #62ec62;
 }
 
-.hacker-area {
+.teacher-area {
   background-color: #066f06;
   background-image: url(images/mathBackground3.png);
 }
 
-.hacker-card .power {
+.teacher-card .power {
   background-image: url(images/math.png);
 }
