@@ -1,4 +1,5 @@
 from random import randint
+import uuid
 scenarios = []
 
 hue = ""
@@ -10,9 +11,10 @@ for i in range(50):
     answer = str(a)+operations[operand]+str(b)
     answer = eval(answer)
 
-    a = { 'xyzhackerCardxyz' : {
+    a = {'xyzteacherCardxyz' : {
         'xyzdescriptionxyz' : "{} {} {} equals to: ".format(a,operations[operand],b),
-        'xyzpowerxyz' : 4,},
+        'xyzpowerxyz' : 4,
+        'xyzidxyz': uuid.uuid4()},
         'xyzplayerCardsxyz' : [{
         'xyzdescriptionxyz' : "{}".format(answer),
         'xyzpowerxyz' : 5,},

@@ -234,6 +234,8 @@ function revealCards(){
 
   var teacherCard = scenario.teacherCard;
   var teacherCardEl = document.querySelector(".teacher-area .card");
+// Override the original width and make the teacher card bigger
+  teacherCardEl.style.width='330px';
 
   // Contents of the player cards
   var playerCards = scenario.playerCards;
