@@ -8,7 +8,7 @@
 
 .player-area {
   background-color: #0d3158;
-  background-image: url(images/chip.svg);
+  background-image: url(images/mathBackground3.png);
 }
 
 .player-card .power {
@@ -23,7 +23,7 @@
 
 .hacker-area {
   background-color: #066f06;
-  background-image: url(images/chip.svg);
+  background-image: url(images/mathBackground3.png);
 }
 
 .hacker-card .power {
