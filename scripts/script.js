@@ -3,8 +3,8 @@ var playerLife = 10;
 var teacherLife = 10;
 
 // Message when the game is over
-var teacherWinnerMessage = "Game over: You got it wrong!";
-var playerWinnerMessage = "You've done it!";
+var teacherWinnerMessage = "ERRRRRROOOOOW !";
+var playerWinnerMessage = "Que não vai dar o quê!";
 
 
 // Game code starts here
