@@ -10,7 +10,10 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
-var url = 'http://127.0.0.1:5000/getcards'
+// local url
+// var url = 'http://127.0.0.1:5000/getcards'
+// prod url
+var url = 'http://18.191.178.168:5000/getcards'
 var scenarios = JSON.parse(httpGet(url))
 
 // var scenarios = [
